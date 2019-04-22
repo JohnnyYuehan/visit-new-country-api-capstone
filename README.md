@@ -4,7 +4,7 @@ The visit-to-new-country app allows you to expore the information and videos fro
 
 ### Working Prototype
 
-View Node working prototype here: [insight•full](https://meditation-tracker.herokuapp.com/) 
+View working prototype here: [Visit new country api capstone](https://johnnyyuehan.github.io/visit-new-country-api-capstone) 
 
 
 ## Site Map: MVP 
