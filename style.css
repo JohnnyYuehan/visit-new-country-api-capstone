@@ -1,0 +1,232 @@
+/*
+The CSS code gets to executed from top to bottom and left ro right
+
+Basic rules to write CSS
+- write GENERAL rules first (for all the paragraph tags in the website for example) and only after that write CSS for SPECIFIC tags (for example the paragraph tags inside the footer)
+- write the css styles to define for the parent (outside) container and THEN the children (inside containers) of that parent and THEN the children (inside containers) of the child above
+*/
+
+
+/* -------------------------------------
+CSS reset
+Is a short set of CSS rules that resets the styling of all HTML elements to a consistent baseline so the website will look the same on all browsers
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    box-sizing: border-box;
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-before: 0px;
+    -webkit-padding-after: 0px;
+    -webkit-padding-start: 0px;
+    -webkit-padding-end: 0px;
+}
+
+body {
+    background: url(https://get.pxhere.com/photo/hand-white-travel-color-material-map-close-up-art-pins-shape-depth-of-field-markings-headpins-1267892.jpg)no-repeat center center fixed;
+    background-size:cover;
+    width:100%;
+    
+}
+
+header {
+    height:75px;
+    background-color:grey;
+    
+}
+
+.navbar {
+    margin-left: auto;
+    margin-right: auto;
+    width:90%;
+    top: 0;
+
+
+}
+nav ul {
+    float: right;
+    margin-top: 8px;
+
+}
+
+nav li {
+    display: inline-block;
+    margin-left:15px;
+    font-family: 'Lobster', cursive;
+    font-size:1.6rem;
+
+}
+
+
+.introInfo-container {
+    padding-top:100px;
+    margin-left: auto;
+    margin-right: auto;
+    width:75%;
+}
+
+h1 {
+    text-align: center;
+    font-size:2.5rem;
+    font-family: 'Lobster', cursive;
+}
+
+.intro-section p {
+    text-align: center;
+    font-size:1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    width:75%;
+}
+
+.country-box {
+    height:250px;
+    margin-left: auto;
+    margin-right: auto;
+    width:75%;
+    margin-top:300px;
+    border:5px solid grey;
+}
+
+.pic-country-right img {
+    margin-right:10%;
+    margin-top:18px;
+    width:300px;
+    float:right;
+}
+
+.info-country-left {
+    text-align: center; 
+    font-size: 1.8rem;
+    margin-top:100px;
+    font-family: 'Lobster', cursive;
+}
+
+.expore-box {
+    height:250px;
+    margin-left: auto;
+    margin-right: auto;
+    width:75%;
+    border:5px solid grey;
+}
+
+.pic-expore-left img {
+    margin-left:10%;
+    margin-top:9px;
+    width:300px;
+    float:left;
+
+}
+
+.info-expore-right {
+    text-align: center; 
+    font-size: 1.8rem;
+    margin-top:100px;
+    font-family: 'Lobster', cursive;
+}
+
+.watch-box {
+    height:250px;
+    margin-left: auto;
+    margin-right: auto;
+    width:75%;
+    border:5px solid grey;
+}
+
+.pic-watch-right img {
+    margin-right:10%;
+    margin-top:18px;
+    width:300px;
+    float:right;
+}
+
+.info-watch-left {
+    text-align: center; 
+    font-size: 1.8rem;
+    margin-top:100px;
+    font-family: 'Lobster', cursive;
+}
+
+.result-section h2 {
+    text-align: center;
+    font-size:2rem;
+
+} 
+
+.result-section p {
+    text-align: center;
+    font-size:1.4rem;
+ 
+}
+
+
+.return-section {
+    text-align: center;
+    font-size:1.8rem;
+
+}
+
+
+
+
+
+.form-section {
+    padding-top:75px;
+
+}
+
+.search-form {
+    text-align: center;
+}
+
+
+
+footer {
+    background-color: lightgray;
+}
+
+.copyright p {
+    text-align: center;
+    
+}
+
+.contact-info ul {
+    text-align: center;
+}
+
+.contact-info li {
+    display: inline-block;
+    margin-left:15px;
+}
+/* -------------------------------------
+Header styles (Main Module)
+(all the styles inside the < header > or < nav > tags)
+*/
+
+
+/* -------------------------------------
+Content styles (Main Module)
+(all the styles inside the < sections > or < aside > tags)
+*/
+
+
+/* -------------------------------------
+Footer styles (Main Module)
+(all the styles inside the < footer > tag)
+*/
+
+
+/* -------------------------------------
+place all the desktop styles above this line
+
+Responsive styles
+(the very last module in the CSS, contains all the media queries and it is dealing with the compatibility with mobiles and tablets)
+
+place all the mobile tables styles below this line
+*/
