@@ -40,19 +40,18 @@ header {
     
 }
 
-.logo {
-    width:100px;
-    display: inline-block;
-}
-
 .navbar {
     margin-left: auto;
     margin-right: auto;
     width:90%;
     top: 0;
-
-
 }
+
+.logo {
+    width:100px;
+    display: inline-block;
+}
+
 nav ul {
     float: right;
     display: inline-block;
@@ -126,25 +125,53 @@ h1 {
     border-radius: 15px;
 }
 
-
-
-.result-section h2 {
+.result-section {
+    margin-left: auto;
+    margin-right: auto;
+    width:75%;
+    border-bottom:1px solid grey;
+    display:block;
+    font-size: 1.8rem;
+    font-family: 'Lobster', cursive;
     text-align: center;
-    font-size:2rem;
-
-} 
-
-.result-section p {
-    text-align: center;
-    font-size:1.4rem;
- 
+    margin-top:100px;
 }
 
+
+.country-flag {
+    width:49%;
+    border-radius: 15px;
+}
+
+.result-section h2 {
+    padding-top:60px;
+    padding-bottom:60px;
+    text-align: center;
+    font-size:2rem;
+}
+
+.info-box, .video-box {
+    display:inline-block;
+    width:49%; 
+    vertical-align: middle;  
+ }
 
 .return-section {
     text-align: center;
     font-size:1.8rem;
+    padding-top:50px;
 
+}
+
+.button-key {
+    font-family: 'Lobster', cursive;
+    border:10px solid grey;
+    border-radius: 5px;
+
+}
+
+footer {
+    margin-top: 50px;
 }
 
 
