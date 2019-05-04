@@ -90,7 +90,7 @@ h1 {
 }
 
 .intro-detail-section {
-    padding-top:300px;
+    padding-top:150px;
 }
 
 .country-box, .expore-box, .watch-box {
@@ -163,10 +163,12 @@ h1 {
 
 }
 
-.button-key {
+button, input, select{
     font-family: 'Lobster', cursive;
-    border:10px solid grey;
+    border:1px solid grey;
     border-radius: 5px;
+    padding:5px 10px;
+    font-size: 20px;
 
 }
 
