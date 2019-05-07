@@ -1,26 +1,26 @@
-//Step 2 - define the function to make the api call; shopkeeper goes to warehouse to get shoe
-function getDataFromApi(queryTarget) {
+////////////////////////////////////////////////////////
+////// functions definitions ///////////////////////
+////////////////////////////////////////////////////////
 
-    //full AJAX intro https://www.w3schools.com/xml/ajax_intro.asp
 
-    // Step 2a - make the api call using the URL, dataType (JSON or JSONP), type (GET or POST)
-    $.ajax({
-            type: "GET",
-            url: 'https://dog.ceo/api/breed/' + queryTarget + '/images/random',
-            dataType: 'json',
+//Step 2a - get data from Wikipedia
+function getDataFromWikipedia(queryTarget) {
+
+    // encodeURIComponent() Function This function encodes special characters. In addition, it encodes the following characters: , / ? : @ & = + $ #
+    // https://www.w3schools.com/jsref/jsref_encodeURIComponent.asp
+    var result = $.ajax({
+        url: "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages|extracts&generator=search&plimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrlimit=10&callback=?&gsrsearch=" + encodeURIComponent(queryTarget),
+        type: "GET",
+        dataType: 'jsonp'
+    })
+        /* if the call is successful (status 200 OK) show results */
+        .done(function (result) {
+            /* if the results are meeningful, we can just console.log them */
+            console.log(result);
+            displayWikipediaSearchData(result)
         })
-
-        //Step 2b - success scenario (call the function to display the results)
-        .done(function (dataOutput) {
-
-            //displays the external api json object in the console
-            displaySearchData(dataOutput);
-        })
-
-        // Step 2c - failure scenario (display errors)
+        /* if the call is NOT successful show errors */
         .fail(function (jqXHR, error, errorThrown) {
-
-            //display errors
             console.log(jqXHR);
             console.log(error);
             console.log(errorThrown);
@@ -28,36 +28,77 @@ function getDataFromApi(queryTarget) {
 };
 
 
-//Step 3 - display the results; sales process
-function displaySearchData(data) {
+//Step 3a - show results from Wikipedia
+function displayWikipediaSearchData(data) {
 
     //Step 3a - console.log the results
-    console.log(data);
+    console.log(data.query.pages);
 
-    //Step 3b - if there are no results show errors
-    if (data.message == "") {
+    //create an empty variable to store one LI for each one the results
+    var buildTheHtmlOutput = "";
 
-        //show and alert
-        alert("No results");
-    }
+    $.each(data.query.pages, function (arrayKey, arrayValue) {
+        //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
+        buildTheHtmlOutput += "<li>";
+        buildTheHtmlOutput += "<p>" + arrayValue.title + "</p>"; //output vide title
+       // buildTheHtmlOutput += "<img src='" + arrayValue.thumbnail.source + "'/>"; //display video's thumbnail
+        buildTheHtmlOutput += "<p>" + arrayValue.extract + "</p>";
+        buildTheHtmlOutput += "</li>";
+    });
+     $('.info-box ul').html(buildTheHtmlOutput);
+}
 
-    //Step 3c - if there are results
-    else {
 
-        //create an HTML results variable
-        let htmlOutput = "<li><img src='" + data.message + "'/></li>";
+//Step 2b - get data from Youtube
+function getDataFromYoutube(userSearchTerm) {
+    $.getJSON("https://www.googleapis.com/youtube/v3/search", {
+        part: "snippet", //Youtube API special parameter (please check documentation here https://developers.google.com/youtube/v3/docs/search/list)
+        maxResults: 20, //number of results per page
+        key: "AIzaSyCclIq-RF7zhCJ_JnoXJBLdGvz-v2nzCB0",
+        q: userSearchTerm, //shearch query from the user
+        type: "video" //only return videos (no channels or playlists) so we can take the video ID and link it back to Youtube
+    },
+        function (receivedApiData) {
+            //show the json array received from the API call
+            console.log(receivedApiData);
+            // if there are no results it will show an error
+            if (receivedApiData.pageInfo.totalResults == 0) {
+                alert("No videos found!");
+            }
+            //if there are results, call the displaySearchResults
+            else {
+                displayYoutubeSearchData(receivedApiData.items);
+            }
+        });
+}
 
 
-        //Step 3e - send the content of HTML results variable to the HTML - display them in the html page
-        $('.js-search-results').html(htmlOutput);
-    }
+//Step 3b - show resutls from Youtube
+function displayYoutubeSearchData(videosArray) {
+
+    //create an empty variable to store one LI for each one the results
+    var buildTheHtmlOutput = "";
+
+    $.each(videosArray, function (videosArrayKey, videosArrayValue) {
+        //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
+        buildTheHtmlOutput += "<li>";
+        buildTheHtmlOutput += "<p>" + videosArrayValue.snippet.title + "</p>"; //output vide title
+        buildTheHtmlOutput += "<a href='https://www.youtube.com/watch?v=" + videosArrayValue.id.videoId + "' target='_blank'>"; //taget blank is going to open the video in a new window
+        buildTheHtmlOutput += "<img src='" + videosArrayValue.snippet.thumbnails.high.url + "'/>"; //display video's thumbnail
+        buildTheHtmlOutput += "</a>";
+        buildTheHtmlOutput += "</li>";
+    });
+
+    //use the HTML output to show it in the index.html
+    $(".video-box ul").html(buildTheHtmlOutput);
 }
 
 
 
 
-
-// Triggers
+////////////////////////////////////////////////////////
+////// functions usage (triggers) ///////////////////////
+////////////////////////////////////////////////////////
 
 
 //when the page loads...
@@ -79,7 +120,7 @@ $(document).on('click', '.button-explore', function (event) {
 });
 
 
-//form trigger
+//Step 1 - get the input from the user
 $(document).submit('.search-form', function (event) {
     event.preventDefault();
     $("section").hide();
@@ -87,16 +128,11 @@ $(document).submit('.search-form', function (event) {
     $(".result-section").show();
     $(".return-section").show();
     $("nav ul").show();
-//taking note from user//  
-let queryTarget = $(event.currentTarget).find('.js-query').val();
-
-//Step 1c - input validation - validate input
-if (queryTarget == '') {
-    alert("Please select a breed");
-}
-
-
-//Step 1d - use the api function - use that input values to call the getResults function defined at the top
-getDataFromApi(queryTarget);
-
+    //taking note from user//  
+    let countryName = $('.country-names').val();
+    console.log(countryName);
+    //using the input, search for country name on Wikipedia
+    getDataFromWikipedia(countryName);
+    //using the input, search for country name on Youtube
+    getDataFromYoutube(countryName);
 });
