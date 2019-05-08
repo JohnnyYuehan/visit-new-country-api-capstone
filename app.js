@@ -39,13 +39,21 @@ function displayWikipediaSearchData(data) {
 
     $.each(data.query.pages, function (arrayKey, arrayValue) {
         //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
+        //buildTheHtmlOutput += "<img src='" + arrayValue.pageimage + "'/>"; buildTheHtmlOutput += "<p>" + arrayValue.title + "</p>";
         buildTheHtmlOutput += "<li>";
         buildTheHtmlOutput += "<p>" + arrayValue.title + "</p>"; //output vide title
-       // buildTheHtmlOutput += "<img src='" + arrayValue.thumbnail.source + "'/>"; //display video's thumbnail
         buildTheHtmlOutput += "<p>" + arrayValue.extract + "</p>";
         buildTheHtmlOutput += "</li>";
     });
      $('.info-box ul').html(buildTheHtmlOutput);
+
+    //  $.each(data.query.pages, function (arrayKey, arrayValue) {
+    //     buildTheHtmlOutput += "<li>";
+    //     buildTheHtmlOutput += "<img src='" + arrayValue.pageimage + "'/>"; 
+    //     buildTheHtmlOutput += "<p>" + arrayValue.title + "</p>"; 
+    //     buildTheHtmlOutput += "</li>";
+    // });
+    //  $('.country-flag-box ul').html(buildTheHtmlOutput);
 }
 
 

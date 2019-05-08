@@ -50,6 +50,7 @@ header {
 .logo {
     width:100px;
     display: inline-block;
+    margin-top:5px;
 }
 
 nav ul {
@@ -63,7 +64,8 @@ nav li {
     display: inline-block;
     margin-left:15px;
     font-family: 'Lobster', cursive;
-    font-size:1.6rem;
+    font-size:1.8rem;
+    padding-top:15px;
 
 }
 
@@ -171,6 +173,16 @@ button, input, select{
     font-size: 20px;
 
 }
+.info-video-box {
+    font-family: 'Noto Serif JP', serif;
+}
+
+
+.info-box ul {
+    border:2px solid gray;
+    background-color:antiquewhite;  
+}
+
 
 footer {
     margin-top: 50px;
