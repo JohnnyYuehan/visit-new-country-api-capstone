@@ -32,14 +32,24 @@ body {
     background: url(https://get.pxhere.com/photo/hand-white-travel-color-material-map-close-up-art-pins-shape-depth-of-field-markings-headpins-1267892.jpg)no-repeat center center fixed;
     background-size:cover;
     width:100%;
-    
+    font-size: 15px;
 }
+ul {
+    list-style-type: none;
+    }
 
 header {
     background-color:grey;
-    
+    position: fixed;
+    width: 100%;
+    top: 0;
 }
-
+.intro-section, .form-section {
+    margin-top: 200px;
+}
+.intro-detail-section, .return-section {
+    margin-bottom: 200px;
+}
 .navbar {
     margin-left: auto;
     margin-right: auto;
@@ -155,7 +165,7 @@ h1 {
 .info-box, .video-box {
     display:inline-block;
     width:49%; 
-    vertical-align: middle;  
+    vertical-align: top;  
  }
 
 .return-section, .explore-section {
@@ -175,6 +185,11 @@ button, input, select{
 }
 .info-video-box {
     font-family: 'Noto Serif JP', serif;
+    max-height: 1000px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: left;
+    font-size: 15px;
 }
 
 
@@ -185,7 +200,10 @@ button, input, select{
 
 
 footer {
-    margin-top: 50px;
+    background-color: lightgray;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
 
 
@@ -203,9 +221,6 @@ footer {
 
 
 
-footer {
-    background-color: lightgray;
-}
 
 .copyright p {
     text-align: center;

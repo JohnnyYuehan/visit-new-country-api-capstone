@@ -137,10 +137,13 @@ $(document).submit('.search-form', function (event) {
     $(".return-section").show();
     $("nav ul").show();
     //taking note from user//  
-    let countryName = $('.country-names').val();
-    console.log(countryName);
+    let countryCode = $('.country-names option:selected').val();
+    let countryName = $('.country-names option:selected').text();
+    console.log(countryName, countryCode.toLowerCase());
     //using the input, search for country name on Wikipedia
-    getDataFromWikipedia(countryName);
+    getDataFromWikipedia(countryName, countryCode.toLowerCase());
     //using the input, search for country name on Youtube
-    getDataFromYoutube(countryName);
+    getDataFromYoutube(countryName, countryCode.toLowerCase());
+    $(".country-flag-box .country-flag").attr("src","website-images/flag-icons/"+countryCode.toLowerCase()+".svg");;
+    $(".country-flag-box h2").text(countryName);
 });
