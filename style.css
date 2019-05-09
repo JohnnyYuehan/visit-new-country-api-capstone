@@ -43,6 +43,7 @@ header {
     position: fixed;
     width: 100%;
     top: 0;
+    height:60px;
 }
 .intro-section, .form-section {
     margin-top: 200px;
@@ -58,16 +59,13 @@ header {
 }
 
 .logo {
-    width:100px;
+    width:65px;
     display: inline-block;
-    margin-top:5px;
 }
 
 nav ul {
     float: right;
     display: inline-block;
-    margin-top:15px;
-
 }
 
 nav li {
@@ -189,7 +187,7 @@ button, input, select{
     overflow-y: auto;
     overflow-x: hidden;
     text-align: left;
-    font-size: 15px;
+    font-size: 25px;
 }
 
 
